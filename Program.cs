@@ -2,8 +2,8 @@
 using System.Drawing;
 using System.IO;
 using System.Text;
-using System.Threading;
 using Emgu.CV;
+using Emgu.CV.Structure;
 
 namespace pthy_video
 {
@@ -11,7 +11,7 @@ namespace pthy_video
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("[!] PTHY (Particle Holography engine) v1.3b");
+            Console.WriteLine("[!] PTHY (Particle Holography engine) v1.3.1");
             start();
         }
 
@@ -131,17 +131,15 @@ namespace pthy_video
                 return a;
             }
 
-            string wrkdir, imgdir, mcmeta, path;
+            string wrkdir, mcmeta, path;
             Console.WriteLine("[!] Warning - PTHY's video functionality is still highly experimental.");
             Console.WriteLine("     The current method for video playback uses nested functions, and has no playback control.");
-            Console.WriteLine("[!] Warning - Pre-rendering utilizes up to 4gb of RAM and up to 20% CPU. Real-time rendering utilizes a massive amount of disk r/w - we recommend running pthy on an SSD.");
             Console.WriteLine("* Press enter to begin generation.");
             Console.ReadLine();
             Console.WriteLine("[!] Please enter a world and link the path to it. Make sure it has no datapacks.");
             wrkdir = Console.ReadLine();
             mcmeta = Path.Combine(wrkdir, @"datapacks\pthy");
             wrkdir = Path.Combine(wrkdir, @"datapacks\pthy\data\nspthy\functions");
-            imgdir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @".minecraft\pthy\bmp\");
             Directory.CreateDirectory(wrkdir);
             using (FileStream fs = File.Create(Path.Combine(mcmeta, "pack.mcmeta")))
             {
@@ -160,10 +158,10 @@ namespace pthy_video
             }
             Console.WriteLine("[!] Datapack created.");
             Console.WriteLine("[!] Please place a repeating command block with the following command:");
-            Console.WriteLine("            /function nspthy:anim          ");
+            Console.WriteLine("            /function nspthy:1          ");
             Console.WriteLine("[!] Make sure the command block is set to \"needs redstone\" and you have a means of powering it.");
             Console.WriteLine("     The command block will be set to \"always active\" automatically to ensure playback, so we recommend using a button.");
-            Console.WriteLine("[!] Press enter to start pre-rendering. (everything will be written to the .minecraft working directory and deleted afterwards)");
+            Console.WriteLine("[!] Press enter to start pre-rendering.");
             Console.ReadLine();
             Console.WriteLine("[!] Please link the path to the video you wish to use.");
             path = Console.ReadLine();
@@ -182,58 +180,59 @@ namespace pthy_video
 
                 while (video.Grab())
                 {
-                    i++;
+                    i++; // increment count
                     video.Retrieve(img); // retrieves frame
-                    var filename = Path.Combine(imgdir, $"i{i}.bmp"); // creates working file path
-                    Directory.CreateDirectory(imgdir); // creates directory
-                    CvInvoke.Imwrite(filename, img); // writes temp working frame
-                    Bitmap image = new Bitmap(filename); // creates system.drawing image instance
-                    float width = (image.Width / GCD(image.Width, image.Height)) * 10, height = (image.Height / GCD(image.Width, image.Height)) * 10; // sets up new image resolution
-                    Size size = new Size((int)(width * 0.75), (int)(height * 0.75));
-                    image = resizeImage(image, size); // creates resized image
-                    filename = Path.Combine(imgdir, $"{i}.bmp"); // creates new file path
-                    image.Save(filename); // writes new frame
+
+                    // CvInvoke.Imwrite(filename, img); // writes temp working frame
+                    Image<Bgr, Byte> _image = img.ToImage<Bgr, Byte>();
+                    Bitmap image = _image.ToBitmap(); // creates system.drawing image instance
+
+                    float width = (image.Width / GCD(image.Width, image.Height)) * 10, height = (image.Height / GCD(image.Width, image.Height)) * 10; // sets up new image resolution (redundant gcd algorithm!)
+                    Size _size = new Size((int)(width * 0.75), (int)(height * 0.75));
+
+                    image = resizeImage(image, _size); // resizes image
+
+                    string fpath = Path.Combine(wrkdir, $"{i}.mcfunction"); // creates function path
+
+                    float density = 7.5f, size = 1.5f; // resolution scaling settings
+
+                    byte[] line = new UTF8Encoding(true).GetBytes("# hi there - u/timetobecomeegg"); // first line
+
+                    using (FileStream fs = File.Create(fpath)) // writes function
+                    {
+                        fs.Write(line, 0, line.Length);
+                        image.RotateFlip(RotateFlipType.Rotate180FlipX);
+                        for (int a = 0; a < image.Width; a++)
+                        {
+                            for (int b = 0; b < image.Height; b++)
+                            {
+                                System.Drawing.Color pixel = image.GetPixel(a, b);
+                                float newR = normalize(pixel.R, 255f, 0f), newG = normalize(pixel.G, 255f, 0f), newB = normalize(pixel.B, 255f, 0f);
+                                line = new UTF8Encoding(true).GetBytes("\nparticle minecraft:dust " + newR.ToString() + ' ' + newG.ToString() + ' ' + newB.ToString() + ' ' + size + " ~" + correctValue(a, density) + " ~" + (correctValue(b, density) + 1f) + " ~" + " 0 0 0 1 0 normal"); //particle minecraft:dust 0.7 0.5 0.3 1.0 ~-0.5 ~1 ~ 0 0 0 1 0 normal
+                                fs.Write(line, 0, line.Length);
+                            }
+                        }
+
+                        if (i == ifc) // test if the frame is the last one to reset command block
+                        {
+                            line = new UTF8Encoding(true).GetBytes("\ndata merge block ~ ~ ~ {Command:\"function nspthy:1\",TrackOutput:0b,auto:0b,UpdateLastExecution:1b}");
+                            fs.Write(line, 0, line.Length);
+                        }
+                        else // sustain
+                        {
+                            line = new UTF8Encoding(true).GetBytes("\ndata merge block ~ ~ ~ {Command:\"function nspthy:" + (i + 1) + "\",TrackOutput:1b,auto:1b,UpdateLastExecution:1b}");
+                            fs.Write(line, 0, line.Length);
+                        }
+
+                        image.Dispose();
+                    }
                 }
             }
             fc = i;
             Console.WriteLine($"* Render complete. ({fc})");
-            Console.WriteLine("* Beginning .mcfunction cast...");
-            for (int c = 1; c <= fc; c++) // function generation - frame preloading
-            {
-                string npath = Path.Combine(imgdir, $"{c}.bmp"), fpath = Path.Combine(wrkdir, $"{c}.mcfunction"); // creates new file path
-                float density = 7.5f, size = 1.5f;
-                byte[] line = new UTF8Encoding(true).GetBytes("# hi there - u/timetobecomeegg");
-                using (FileStream fs = File.Create(fpath))
-                {
-                    fs.Write(line, 0, line.Length);
-                    Bitmap image = new Bitmap(npath);
-                    image.RotateFlip(RotateFlipType.Rotate180FlipX);
-                    for (int a = 0; a < image.Width; a++)
-                    {
-                        for (int b = 0; b < image.Height; b++)
-                        {
-                            System.Drawing.Color pixel = image.GetPixel(a, b);
-                            float newR = normalize(pixel.R, 255f, 0f), newG = normalize(pixel.G, 255f, 0f), newB = normalize(pixel.B, 255f, 0f);
-                            line = new UTF8Encoding(true).GetBytes("\nparticle minecraft:dust " + newR.ToString() + ' ' + newG.ToString() + ' ' + newB.ToString() + ' ' + size + " ~" + correctValue(a, density) + " ~" + (correctValue(b, density) + 1f) + " ~" + " 0 0 0 1 0 normal"); //particle minecraft:dust 0.7 0.5 0.3 1.0 ~-0.5 ~1 ~ 0 0 0 1 0 normal
-                            fs.Write(line, 0, line.Length);
-                        }
-                    }
+            Console.WriteLine("* Functions are now cast in real time. Generation done!");
 
-                    line = new UTF8Encoding(true).GetBytes("\ndata merge block ~ ~ ~ {Command:\"function nspthy:" + (c + 1) + "\",TrackOutput:1b,auto:1b,UpdateLastExecution:1b}");
-                    fs.Write(line, 0, line.Length);
-                }
-            }
-
-            byte[] line2 = new UTF8Encoding(true).GetBytes("# hi there - u/timetobecomeegg");
-
-            using (FileStream fs = File.Create(Path.Combine(wrkdir, "anim.mcfunction")))
-            {
-                fs.Write(line2, 0, line2.Length);
-                line2 = new UTF8Encoding(true).GetBytes("\nsetblock ~ ~ ~ repeating_command_block[conditional=false,facing=down]{Command:\"function nspthy:1\",auto:1b,UpdateLastExecution:0b} destroy");
-                fs.Write(line2, 0, line2.Length);
-            }
-
-            Console.WriteLine("* Generation done! Run \"function nspthy:anim\" in a repeating command block to see your video.");
+            Console.WriteLine("* Generation done! Run \"function nspthy:1\" in a repeating command block to see your video.");
         }
             public static void chcmd(string input)
         {
