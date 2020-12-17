@@ -21,11 +21,11 @@ Here's the source code people asked for.
   
 **Current milestones:**
 
-  A Linux release could be done by the end of December. Note that the only way I will have of testing it is to run it in a VM, so performance will not be the greatest. Any linux devs which would be open to contribute to the repo are welcome to do so.
+  - A Linux release could be done by the end of December. Note that the only way I will have of testing it is to run it in a VM, so performance will not be the greatest. Any linux devs which would be open to contribute to the repo are welcome to do so.
   
-  Real-time file cleanup - no need to run a separate command to remove working files.
+  - Real-time file cleanup - no need to run a separate command to remove working files.
   
-  Better resolution downscale algorithm - the current expression used to downscale video files is flawed, and may sometimes lift the resolution massively, resulting in 500mb function files.
+  - Better resolution downscale algorithm - the current expression used to downscale video files is flawed, and may sometimes lift the resolution massively, resulting in 500mb function files.
 
 The *exit* command should be used to quit the software, as it ensures file cleanup.
    
