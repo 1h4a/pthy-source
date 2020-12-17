@@ -21,7 +21,7 @@ Here's the source code people asked for.
   
 **Newest update:**
 
-  *The current newest update is v1.3.1 "the performance update". Here are all the changes:
+  *The current newest update is v1.3.1 "the performance update". Here are all the changes:*
 
     - Revamped the frame export, resize and function generation systems. Generation of full videos is now lightning fast!
     - Worked on resource usage - max RAM usage on an average ~480p video (before downscale) is around 100mb with CPU only ever peaking at 10%!
@@ -34,11 +34,11 @@ These changes should hopefully make PTHY much more usable and efficient, along w
 
   - A Linux release could be done by the end of December. Note that the only way I will have of testing it is to run it in a VM, so performance will not be the greatest. Any linux devs which would be open to contribute to the repo are welcome to do so.
   
-  ~~- Real-time file cleanup - no need to run a separate command to remove working files.~~ Working files are now a thing of the past, as per v1.3.1!
+  - ~~Real-time file cleanup - no need to run a separate command to remove working files.~~ Working files are now a thing of the past, as per v1.3.1!
   
   - Better resolution downscale algorithm - the current expression used to downscale video files is flawed, and may sometimes lift the resolution massively, resulting in 500mb function files.
 
-~~The *exit* command should be used to quit the software, as it ensures file cleanup.~~ Files are no longer written as per v1.3.1! The exit command is redundant and will be removed shortly.
+  - ~~The *exit* command should be used to quit the software, as it ensures file cleanup.~~ Files are no longer written as per v1.3.1! The exit command is redundant and will be removed shortly.
    
 PTHY is the first, kinda user friendly software to create particle holograms easily.
 Currently, there is support for video and image export - both are being updated and made better constantly.
