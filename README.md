@@ -8,8 +8,8 @@ Here's the source code people asked for.
    - Release is pre-prepared. Simply extract the .zip and run.
 
   Source:
+   - You need to install the Emgu.CV, Emgu.CV windows runtime and System.Drawing.Common NuGet packages.
    - Standard VS2019 solution in C#. Pretty straightforward.
-   - You need to install the Emgu.CV(https://www.nuget.org/packages/Emgu.CV/4.4.0.4099), Emgu.CV windows runtime(https://www.nuget.org/packages/Emgu.CV.runtime.windows/) and System.Drawing.Common(https://www.nuget.org/packages/System.Drawing.Common/) NuGet packages.
 
 **Additional info:**
   PTHY accesses the following directories without user input:
