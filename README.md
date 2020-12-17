@@ -1,18 +1,23 @@
 # pthy-source
-Minecraft Particle Holography engine in C#.
+Minecraft ParTicle HolographY engine in C#.
 
 Here's the source code people asked for.
 
-Installation of public release:
-Extract .zip and ensure all dependencies are contained next to .exe. .exe is ready to run.
+**Installation:**
+  Public release:
+   - Release is pre-prepared. Simply extract the .zip and run.
 
-Installation of source:
-Source is a standard VS2019 solution in C#. Pretty straightforward.
+  Source:
+   - Standard VS2019 solution in C#. Pretty straightforward.
 
-All directories accessed defaultly:
-%appdata%\.minecraft\pthy - bitmap export, use 'exit' command to ensure cleanup
-%appdata%\.minecraft\saves\(user input) - datapack auto-creation and functions
+**Additional info:**
+  PTHY accesses the following directories without user input:
+   - %appdata%\.minecraft\pthy
+   The *exit* command should be used to quit the software, as it ensures file cleanup.
+   
+PTHY is the first, kinda user friendly software to create particle holograms easily.
+Currently, there is support for video and image export - both are being updated and made better constantly.
 
 PTHY uses Emgu.CV with the open source license. 
 
-- u/timetobecomeegg
+(u/timetobecomeegg)
