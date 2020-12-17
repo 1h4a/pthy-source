@@ -13,7 +13,8 @@ Here's the source code people asked for.
 **Additional info:**
   PTHY accesses the following directories without user input:
    - %appdata%\.minecraft\pthy
-  The *exit* command should be used to quit the software, as it ensures file cleanup.
+
+The *exit* command should be used to quit the software, as it ensures file cleanup.
    
 PTHY is the first, kinda user friendly software to create particle holograms easily.
 Currently, there is support for video and image export - both are being updated and made better constantly.
