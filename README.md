@@ -17,7 +17,7 @@ Here's the source code people asked for.
   PTHY accesses the following directories without user input:
    - %appdata%\.minecraft\pthy
   
-  PTHY is *still* not finished. A lot of the generation algorithms are unpolished - some examples are the last frame having a reference to a non-existant frame, anim.mcfunction failing to generate half the time and other issues. Take the software with a grain of salt.
+  PTHY is *still* not finished. A lot of the generation algorithms are unpolished. - ~~some examples are the last frame having a reference to a non-existant frame, anim.mcfunction failing to generate half the time and other issues.~~ Take the software with a grain of salt.
   
 **Newest update:**
 
