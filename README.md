@@ -31,6 +31,12 @@ It's intended to draw images and video, but hey. It's open source. You can force
     - No more working files - the *%appdata%\.minecraft\pthy* directory is now redundant, as no files except for the final functions are generated!
     
 These changes should hopefully make PTHY much more usable and efficient, along with making it much more lightweight.
+
+**Roadmap:**
+
+  Current version (*1.3.1*) -> MCJE L\*a\*b\* matched generation (~1.3) -> Release 1.4 "The Bedrock Update" (MCBE support via L\*a\*b\* matching) -> Linux Release 1.0 (LR1.0-1.4)
+  
+  *Somewhere along the way, bug fixes as patches!*
   
 ~~**Current milestones:**~~ *check the milestones tab in issues for milestones, roadmap for planned things*
    
