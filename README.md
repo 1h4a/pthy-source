@@ -1,7 +1,9 @@
 # pthy-source
-Minecraft ParTicle HolographY engine in C#.
+Minecraft ParTicle HolographY engine in C# - view images and video in minecraft as a hologram!
 
-Here's the source code people asked for.
+You can literally use this to do anything in Minecraft. Literally anything. Make custom blocks with it for all I care. Add texture. Do whatever.
+
+It's intended to draw images and video, but hey. It's open source. You can force it to render anything.
 
 **Installation:**
   
