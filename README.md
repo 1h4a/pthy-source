@@ -32,15 +32,7 @@ It's intended to draw images and video, but hey. It's open source. You can force
     
 These changes should hopefully make PTHY much more usable and efficient, along with making it much more lightweight.
   
-**Current milestones:**
-
-  - A Linux release could be done by the end of December. Note that the only way I will have of testing it is to run it in a VM, so performance will not be the greatest. Any linux devs which would be open to contribute to the repo are welcome to do so.
-  
-  - ~~Real-time file cleanup - no need to run a separate command to remove working files.~~ Working files are now a thing of the past, as per v1.3.1!
-  
-  - Better resolution downscale algorithm - the current expression used to downscale video files is flawed, and may sometimes lift the resolution massively, resulting in 500mb function files.
-
-  - ~~The *exit* command should be used to quit the software, as it ensures file cleanup.~~ Files are no longer written as per v1.3.1! The exit command is redundant and will be removed shortly.
+~~**Current milestones:**~~ *check the milestones tab in issues for milestones, roadmap for planned things*
    
 PTHY is the first, kinda user friendly software to create particle holograms easily.
 Currently, there is support for video and image export - both are being updated and made better constantly.
