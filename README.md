@@ -5,7 +5,7 @@ You can literally use this to do anything in Minecraft. Literally anything. Make
 
 It's intended to draw images and video, but hey. It's open source. You can force it to render anything.
 
-**Development is currently on hold. I don't have the resources and have other projects.**
+**Happy new year! After a brief pause, we're back. Development will resume ^**
 
 **Installation:**
   
