@@ -7,6 +7,8 @@ It's intended to draw images and video, but hey. It's open source. You can force
 
 **Happy new year! After a brief pause, we're back. Development will resume ^**
 
+I'm working on the L\*a\*b\* matching system. A particle pack will be provided - all particles available to the system will be in separate files, as the game automatically changes the color of some particles and only ever has them stored as white. You don't need to retexture them for them to show up as the particles from the resource pack you have, but if you do, the color will be far more accurate, as the matching would be run on vanilla particles.
+
 **Installation:**
   
   Public release:
