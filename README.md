@@ -22,7 +22,7 @@ I'm working on the L\*a\*b\* matching system. A particle pack will be provided -
 
 **Additional info:**
 
-  PTHY accesses the following directories without user input:
+  PTHY ~~accesses the following directories without user input:~~ _As of v1.3.1 "the performance update", PTHY does create this directory but it is no longer used._
    - %appdata%\.minecraft\pthy
   
   PTHY is *still* not finished. A lot of the generation algorithms are unpolished. - ~~some examples are the last frame having a reference to a non-existant frame, anim.mcfunction failing to generate half the time and other issues.~~ Take the software with a grain of salt.
