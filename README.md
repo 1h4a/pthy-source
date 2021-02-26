@@ -7,8 +7,6 @@ It's intended to draw images and video, but hey. It's open source. You can force
 
 **Happy new year! After a brief pause, we're back. Development will resume ^**
 
-I'm working on the L\*a\*b\* matching system. A particle pack will be provided - all particles available to the system will be in separate files, as the game automatically changes the color of some particles and only ever has them stored as white. You don't need to retexture them for them to show up as the particles from the resource pack you have, but if you do, the color will be far more accurate, as the matching would be run on vanilla particles.
-
 **To use PTHY's code in your own projects, provide proper credit referencing the github page. eg. 'Using code from PTHY (github.com/y3i/pthy-source)' Additionally, you must credit all used libraries or other external used projects as stated in this repository.**
 
 **Installation:**
@@ -40,7 +38,7 @@ These changes should hopefully make PTHY much more usable and efficient, along w
 
 **Roadmap:**
 
-  Current version (*1.3.1*) -> MCJE L\*a\*b\* matched generation (~1.3) -> Release 1.4 "The Bedrock Update" (MCBE support via L\*a\*b\* matching) -> Linux Release 1.0 (LR1.0-1.4)
+  Current version (*1.3.1*) -> Linux Release 1.0 (LR1.0-1.4) -> Bedrock Support
   
   *Somewhere along the way, bug fixes as patches!*
   
