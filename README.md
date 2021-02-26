@@ -5,8 +5,6 @@ You can literally use this to do anything in Minecraft. Literally anything. Make
 
 It's intended to draw images and video, but hey. It's open source. You can force it to render anything.
 
-**Happy new year! After a brief pause, we're back. Development will resume ^**
-
 **To use PTHY's code in your own projects, provide proper credit referencing the github page. eg. 'Using code from PTHY (github.com/y3i/pthy-source)' Additionally, you must credit all used libraries or other external used projects as stated in this repository.**
 
 **Installation:**
@@ -17,13 +15,6 @@ It's intended to draw images and video, but hey. It's open source. You can force
   Source:
    - You need to install the [Emgu.CV](https://www.nuget.org/packages/Emgu.CV/4.4.0.4099), [Emgu.CV windows runtime](https://www.nuget.org/packages/Emgu.CV.runtime.windows/) and [System.Drawing.Common](https://www.nuget.org/packages/System.Drawing.Common/) NuGet packages. *You also need to install [Emgu.CV.UI](https://www.nuget.org/packages/Emgu.CV.UI/) and [Emgu.CV.Bitmap](https://www.nuget.org/packages/Emgu.CV.Bitmap/) - these two packages were added in v1.3.1 "the performance update" and are core to generating functions*
    - Standard VS2019 solution in C#. Pretty straightforward.
-
-**Additional info:**
-
-  PTHY ~~accesses the following directories without user input:~~ _As of v1.3.1 "the performance update", PTHY does create this directory but it is no longer used._
-   - %appdata%\.minecraft\pthy
-  
-  PTHY is *still* not finished. A lot of the generation algorithms are unpolished. - ~~some examples are the last frame having a reference to a non-existant frame, anim.mcfunction failing to generate half the time and other issues.~~ Take the software with a grain of salt.
   
 **Newest update:**
 
@@ -33,8 +24,6 @@ It's intended to draw images and video, but hey. It's open source. You can force
     - Worked on resource usage - max RAM usage on an average ~480p video (before downscale) is around 100mb with CPU only ever peaking at 10%!
     - Proper disposal - no more RAM clogging!
     - No more working files - the *%appdata%\.minecraft\pthy* directory is now redundant, as no files except for the final functions are generated!
-    
-These changes should hopefully make PTHY much more usable and efficient, along with making it much more lightweight.
 
 **Roadmap:**
 
