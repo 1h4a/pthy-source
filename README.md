@@ -7,7 +7,7 @@ It's intended to draw images and video, but hey. It's open source. You can force
 
 **To use PTHY's code in your own projects, provide proper credit referencing the github page. eg. 'Using code from PTHY (github.com/y3i/pthy-source)' Additionally, you must credit all used libraries or other external used projects as stated in this repository.**
 
-**Installation:**
+  **Installation:**
   
   Public release:
    - Release is pre-prepared. Simply extract the .zip and run.
@@ -16,15 +16,20 @@ It's intended to draw images and video, but hey. It's open source. You can force
    - You need to install the [Emgu.CV](https://www.nuget.org/packages/Emgu.CV/4.4.0.4099), [Emgu.CV windows runtime](https://www.nuget.org/packages/Emgu.CV.runtime.windows/) and [System.Drawing.Common](https://www.nuget.org/packages/System.Drawing.Common/) NuGet packages. *You also need to install [Emgu.CV.UI](https://www.nuget.org/packages/Emgu.CV.UI/) and [Emgu.CV.Bitmap](https://www.nuget.org/packages/Emgu.CV.Bitmap/) - these two packages were added in v1.3.1 "the performance update" and are core to generating functions*
    - Standard VS2019 solution in C#. Pretty straightforward.
   
-**Newest update:**
-
-  *The current newest update is v1.3.1 "the performance update". Here are all the changes:*
-
-    - Revamped the frame export, resize and function generation systems. Generation of full videos is now lightning fast!
-    - Worked on resource usage - max RAM usage on an average ~480p video (before downscale) is around 100mb with CPU only ever peaking at 10%!
-    - Proper disposal - no more RAM clogging!
-    - No more working files - the *%appdata%\.minecraft\pthy* directory is now redundant, as no files except for the final functions are generated!
-
+  **Usage:**
+  
+   The software on it's own should be pretty straight forward to use, but there are some specific details outside of it to keep in mind.
+  
+   Before you generate a video, make sure you enter the world you're generating to. Once it's done generating, run */reload* in Minecraft. 
+  
+   Before you ever even use this software, make sure you have *Optifine* installed and you've allocated atleast 4gb of RAM to the Minecraft profile. For optimal experience, use 8gb. Any less that 4gb will give you lag spikes constantly. Running it without Optifine will make sure you're viewing the video at a lovely 3 fps.
+   
+   Image generation has not been updated in ages, and so it does not generate into a specific world. You have to install it manually.
+   
+   I probably don't have to say this, but actually running the video requires you to have a beefy computer!
+   
+   That's it. Have fun!
+   
 **FAQs:**
 
   Can I run it on Linux? _I have been asked this too many times now. You could try your luck with Mono, but there's no Linux release right now. I did have plans to work on one, but porting everything to Mono and potentially running into issues with existing libraries has proved to be a large issue. Plus, I don't even have a physical Linux machine._
@@ -45,13 +50,13 @@ It's intended to draw images and video, but hey. It's open source. You can force
   
   Can I make my own project with your code? _Yes. Follow the proper crediting rules and include dependencies._
   
-**Roadmap:**
-
-  Current version (*1.3.1*) -> Linux Release 1.0 (LR1.0-1.4) -> Bedrock Support
+  **Planned... things:**
   
-  *Somewhere along the way, bug fixes as patches!*
+  - Making it much more user friendly
+  - Linux build
+  - 3d models!
   
-~~**Current milestones:**~~ *check the milestones tab in issues for milestones, roadmap for planned things*
+~~**Current milestones:**~~ *check the milestones tab in issues for milestones*
    
 PTHY is the first, kinda user friendly software to create particle holograms easily.
 Currently, there is support for video and image export - both are being updated and made better constantly.
