@@ -62,5 +62,3 @@ PTHY is the first, kinda user friendly software to create particle holograms eas
 Currently, there is support for video and image export - both are being updated and made better constantly.
 
 PTHY uses Emgu.CV with the open source license. 
-
-(u/timetobecomeegg)
