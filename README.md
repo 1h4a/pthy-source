@@ -5,6 +5,8 @@ You can literally use this to do anything in Minecraft. Literally anything. Make
 
 It's intended to draw images and video, but hey. It's open source. You can force it to render anything.
 
+**This project is discontinued. I will not be maintaining it anymore, but I am thinking about making a re-work also with 3D models in the future.**
+
 **To use PTHY's code in your own projects, provide proper credit referencing the github page. eg. 'Using code from PTHY (github.com/y3i/pthy-source)' Additionally, you must credit all used libraries or other external used projects as stated in this repository.**
 
   **Installation:**
@@ -49,16 +51,5 @@ It's intended to draw images and video, but hey. It's open source. You can force
   Can I have multiple of these in my world? _Yes, technically. To do this simply generate the video and change the namespace's name before generating again._
   
   Can I make my own project with your code? _Yes. Follow the proper crediting rules and include dependencies._
-  
-  **Planned... things:**
-  
-  - Making it much more user friendly
-  - Linux build
-  - 3d models!
-  
-~~**Current milestones:**~~ *check the milestones tab in issues for milestones*
-   
-PTHY is the first, kinda user friendly software to create particle holograms easily.
-Currently, there is support for video and image export - both are being updated and made better constantly.
 
 PTHY uses Emgu.CV with the open source license. 
