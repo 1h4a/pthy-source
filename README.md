@@ -5,7 +5,7 @@ You can literally use this to do anything in Minecraft. Literally anything. Make
 
 It's intended to draw images and video, but hey. It's open source. You can force it to render anything.
 
-**The original project written in C# is now discontinued, and work is underway on a C++ rewrite.**
+**The original project written in C# is now discontinued, and work is underway on a C++ rewrite. All future updates including 3d rendering will be part of [Prism](https://github.com/1h4a/prism)**
 
 **To use PTHY's code in your own projects, provide proper credit referencing the github page. eg. 'Using code from PTHY (github.com/y3i/pthy-source)' Additionally, you must credit all used libraries or other external used projects as stated in this repository.**
 
